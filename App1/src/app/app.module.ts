@@ -12,6 +12,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+import { Geolocation } from '@ionic-native/geolocation';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -40,6 +41,7 @@ export function provideSettings(storage: Storage) {
   ],
   imports: [
     BrowserModule,
+    IonicModule.forRoot(MyApp),
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -61,6 +63,7 @@ export function provideSettings(storage: Storage) {
     User,
     Camera,
     SplashScreen,
+    Geolocation,
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
